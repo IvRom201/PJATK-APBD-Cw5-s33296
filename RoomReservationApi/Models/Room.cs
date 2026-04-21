@@ -14,7 +14,7 @@ public class Room
 
     public int Floor { get; set; }
 
-    [Range(1, int.MaxValue, ErrorMessage = "Capacity musi być większe od zera.")]
+    [Range(1, int.MaxValue, ErrorMessage = "Capacity musi być większe od zera")]
     public int Capacity { get; set; }
 
     public bool HasProjector { get; set; }

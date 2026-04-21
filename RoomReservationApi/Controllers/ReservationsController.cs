@@ -41,7 +41,7 @@ public class ReservationsController : ControllerBase
 
         if (reservation is null)
         {
-            return NotFound(new { message = $"Rezerwacja o id {id} nie istnieje." });
+            return NotFound(new { message = $"Rezerwacja o id {id} nie istnieje" });
         }
 
         return Ok(reservation);
@@ -54,19 +54,19 @@ public class ReservationsController : ControllerBase
 
         if (room is null)
         {
-                return NotFound(new { message = "Nie można dodać rezerwacji dla nieistniejącej sali." });
+                return NotFound(new { message = "Nie można dodać rezerwacji dla nieistniejącej sali" });
         }
 
         if (!room.IsActive)
         {
-            return BadRequest(new { message = "Nie można dodać rezerwacji dla nieaktywnej sali." });
+            return BadRequest(new { message = "Nie można dodać rezerwacji dla nieaktywnej sali" });
         }
 
         if (HasTimeConflict(reservation))
         {
             return Conflict(new
             {
-                message = "Rezerwacja koliduje czasowo z inną rezerwacją tej samej sali."
+                message = "Rezerwacja koliduje czasowo z inną rezerwacją tej samej sali"
             });
         }
 
@@ -83,19 +83,19 @@ public class ReservationsController : ControllerBase
 
         if (existingReservation is null)
         {
-            return NotFound(new { message = $"Rezerwacja o id {id} nie istnieje." });
+            return NotFound(new { message = $"Rezerwacja o id {id} nie istnieje" });
         }
 
         var room = AppData.Rooms.FirstOrDefault(r => r.Id == updatedReservation.RoomId);
 
         if (room is null)
         {
-            return NotFound(new { message = "Nie można przypisać rezerwacji do nieistniejącej sali." });
+            return NotFound(new { message = "Nie można przypisać rezerwacji do nieistniejącej sali" });
         }
 
         if (!room.IsActive)
         {
-            return BadRequest(new { message = "Nie można przypisać rezerwacji do nieaktywnej sali." });
+            return BadRequest(new { message = "Nie można przypisać rezerwacji do nieaktywnej sali" });
         }
 
         updatedReservation.Id = id;
@@ -104,7 +104,7 @@ public class ReservationsController : ControllerBase
         {
             return Conflict(new
             {
-                message = "Zmieniona rezerwacja koliduje czasowo z inną rezerwacją tej samej sali."
+                message = "Zmieniona rezerwacja koliduje czasowo z inną rezerwacją tej samej sali"
             });
         }
 
@@ -126,7 +126,7 @@ public class ReservationsController : ControllerBase
 
         if (reservation is null)
         {
-            return NotFound(new { message = $"Rezerwacja o id {id} nie istnieje." });
+            return NotFound(new { message = $"Rezerwacja o id {id} nie istnieje" });
         }
 
         AppData.Reservations.Remove(reservation);

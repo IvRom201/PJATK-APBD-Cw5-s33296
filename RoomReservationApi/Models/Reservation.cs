@@ -6,7 +6,7 @@ public class Reservation : IValidatableObject
 {
     public int Id { get; set; }
 
-    [Range(1, int.MaxValue, ErrorMessage = "RoomId musi być większe od zera.")]
+    [Range(1, int.MaxValue, ErrorMessage = "RoomId musi być większe od zera")]
     public int RoomId { get; set; }
 
     [Required]
@@ -29,14 +29,14 @@ public class Reservation : IValidatableObject
         if (Date == default)
         {
             yield return new ValidationResult(
-                "Date jest wymagane.",
+                "Date jest wymagane",
                 new[] { nameof(Date) });
         }
 
         if (EndTime <= StartTime)
         {
             yield return new ValidationResult(
-                "EndTime musi być późniejsze niż StartTime.",
+                "EndTime musi być późniejsze niż StartTime",
                 new[] { nameof(EndTime), nameof(StartTime) });
         }
 
@@ -45,7 +45,7 @@ public class Reservation : IValidatableObject
         if (!allowedStatuses.Contains(Status, StringComparer.OrdinalIgnoreCase))
         {
             yield return new ValidationResult(
-                "Status musi mieć wartość: planned, confirmed albo cancelled.",
+                "Status musi mieć wartość: planned, confirmed albo cancelled",
                 new[] { nameof(Status) });
         }
     }

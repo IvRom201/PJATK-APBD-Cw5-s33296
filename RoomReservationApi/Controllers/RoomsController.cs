@@ -39,7 +39,7 @@ public class RoomsController : ControllerBase
 
         if (room is null)
         {
-            return NotFound(new { message = $"Sala o id {id} nie istnieje." });
+            return NotFound(new { message = $"Sala o id {id} nie istnieje" });
         }
 
         return Ok(room);
@@ -72,7 +72,7 @@ public class RoomsController : ControllerBase
 
         if (existingRoom is null)
         {
-            return NotFound(new { message = $"Sala o id {id} nie istnieje." });
+            return NotFound(new { message = $"Sala o id {id} nie istnieje" });
         }
 
         existingRoom.Name = updatedRoom.Name;
@@ -92,7 +92,7 @@ public class RoomsController : ControllerBase
 
         if (room is null)
         {
-            return NotFound(new { message = $"Sala o id {id} nie istnieje." });
+            return NotFound(new { message = $"Sala o id {id} nie istnieje" });
         }
 
         bool hasRelatedReservations = AppData.Reservations.Any(r => r.RoomId == id);
@@ -101,7 +101,7 @@ public class RoomsController : ControllerBase
         {
             return Conflict(new
             {
-                message = "Nie można usunąć sali, ponieważ ma powiązane rezerwacje."
+                message = "Nie można usunąć sali, ponieważ ma powiązane rezerwacje"
             });
         }
 
